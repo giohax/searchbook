@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card = ({ book, handler }) => {
+const Card = ({ book, handler, text }) => {
     const id = book?.id;
     const img =
         book?.volumeInfo?.imageLinks?.thumbnail ??
@@ -26,7 +26,7 @@ const Card = ({ book, handler }) => {
                     <p className="text-sm text-gray-400">{publisher}</p>
                 </div>
                 <button className="text-xs bg-amber-500 text-white p-2 mt-3">
-                    ADD TO WISHLIST
+                    {text}
                 </button>
             </div>
         </li>

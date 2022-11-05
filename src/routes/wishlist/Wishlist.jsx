@@ -21,6 +21,7 @@ const Wishlist = () => {
                             key={book.id}
                             book={book}
                             handler={() => handleRemoveFromWishlist(book.id)}
+                            text={"REMOVE"}
                         />
                     ))}
             </div>

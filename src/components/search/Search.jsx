@@ -65,6 +65,7 @@ const Search = () => {
                                     key={book.id}
                                     book={book}
                                     handler={(e) => handleAddToWishlist(e)}
+                                    text={"ADD TO WISHLIST"}
                                 />
                             ))}
                     </div>
