@@ -25,8 +25,8 @@ const Card = ({ book, handler }) => {
                         {publisher ?? "N/A"}
                     </p>
                 </div>
-                <button className="text-sm bg-red-500 text-white w-1/2 p-2 mt-3">
-                    Details
+                <button className="text-sm bg-red-500 text-white p-2 mt-3">
+                    ADD TO WISHLIST
                 </button>
             </div>
         </li>

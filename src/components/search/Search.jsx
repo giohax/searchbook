@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Card from "../card/Card";
 
 import { useDispatch } from "react-redux";
@@ -10,24 +10,23 @@ import { fetchBookItems } from "../../features/search/searchBookSlice";
 import { useSelector } from "react-redux";
 import { wishlistActions } from "../../features/wishlist/wishlistSlice";
 import LoadingGif from "../../assets/loading.gif";
+
 // import Pagination from "../pagination/Pagination";
-import debounce from "../../scripts/debounce";
 
 const Search = () => {
     const [userInput, setUserInput] = useState("");
     const dispatch = useDispatch();
     const bookItems = useSelector((state) => state.searchBook.bookItems);
-    const searchBook = useSelector((state) => state.searchBook);
-    const debouncedFetch = debounce(fetchBookItems, 1000);
-    let timerID;
+    const loading = useSelector((state) => state.searchBook.loading);
+    const timerID = useRef(null);
 
     useEffect(() => {
-        // dispatch(debouncedFetch(userInput));
-        clearTimeout(timerID);
-        timerID = setTimeout(() => {
-            console.log("fetching...");
-            dispatch(fetchBookItems(userInput));
-        }, 2000);
+        clearTimeout(timerID.current);
+        if (userInput.trim() !== "") {
+            timerID.current = setTimeout(() => {
+                dispatch(fetchBookItems(userInput));
+            }, 2000);
+        }
     }, [userInput]);
 
     const handleInput = (e) => {
@@ -59,18 +58,16 @@ const Search = () => {
                 value={userInput}
             />
             <div className="grid gap-5 md:grid-cols-2">
-                {searchBook.loading && (
-                    <img src={LoadingGif} alt="Loading..." />
-                )}
+                {loading && <img src={LoadingGif} alt="Loading..." />}
                 {/* <Pagination> */}
-                {!searchBook.loading &&
+                {!loading &&
                     userInput &&
                     bookItems
-                        .filter((book) =>
-                            book.volumeInfo.title
-                                .toLowerCase()
-                                .includes(userInput)
-                        )
+                        // .filter((book) =>
+                        //     book.volumeInfo.title
+                        //         .toLowerCase()
+                        //         .includes(userInput)
+                        // )
                         .map((book) => (
                             <Card
                                 key={book.id}
