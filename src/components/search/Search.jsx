@@ -50,7 +50,7 @@ const Search = () => {
                 placeholder="Search book..."
                 value={userInput}
             />
-            <div className="md:grid grid-cols-2 space-x-3">
+            <div className="grid gap-5 md:grid-cols-2">
                 {searchBook.loading && (
                     <img src={LoadingGif} alt="Loading..." />
                 )}
