@@ -1,8 +1,8 @@
 import React from "react";
-// import { useSelector } from "react-redux";
+
 import { useEffect, useState } from "react";
 import Card from "../card/Card";
-import "./Search.scss";
+
 import { useDispatch } from "react-redux";
 
 import { fetchBookItems } from "../../features/search/searchBookSlice";
@@ -10,7 +10,7 @@ import { fetchBookItems } from "../../features/search/searchBookSlice";
 import { useSelector } from "react-redux";
 import { wishlistActions } from "../../features/wishlist/wishlistSlice";
 import LoadingGif from "../../assets/loading.gif";
-import Pagination from "../pagination/Pagination";
+// import Pagination from "../pagination/Pagination";
 
 const Search = () => {
     const [userInput, setUserInput] = useState("");
@@ -42,37 +42,35 @@ const Search = () => {
     };
 
     return (
-        <div className="search">
+        <div className="p-10 bg-amber-50 flex flex-col h-screen items-center">
             <input
                 onChange={handleInput}
-                className="searchInput"
+                className="flex border border-gray-200 shadow-lg px-6 py-3 focus:outline-none w-full bg-amber-50 mb-5 w-full sm:max-w-sm"
                 type="text"
                 placeholder="Search book..."
                 value={userInput}
             />
             {searchBook.loading && <img src={LoadingGif} alt="Loading..." />}
-            <Pagination>
-                {!searchBook.loading &&
-                    userInput &&
-                    bookItems
-                        .filter((book) =>
-                            book.volumeInfo.title
-                                .toLowerCase()
-                                .includes(userInput)
-                        )
-                        .map((book) => (
-                            <Card
-                                key={book.id}
-                                id={book.id}
-                                img={book.volumeInfo.imageLinks.thumbnail}
-                                title={book.volumeInfo.title}
-                                authors={book.volumeInfo.authors}
-                                description={book.volumeInfo.description}
-                                publisher={book.volumeInfo.publisher}
-                                action={(e) => handleAddToWishlist(e)}
-                            />
-                        ))}
-            </Pagination>
+            {/* <Pagination> */}
+            {!searchBook.loading &&
+                userInput &&
+                bookItems
+                    .filter((book) =>
+                        book.volumeInfo.title.toLowerCase().includes(userInput)
+                    )
+                    .map((book) => (
+                        <Card
+                            key={book.id}
+                            id={book.id}
+                            img={book.volumeInfo.imageLinks.thumbnail}
+                            title={book.volumeInfo.title}
+                            authors={book.volumeInfo.authors}
+                            description={book.volumeInfo.description}
+                            publisher={book.volumeInfo.publisher}
+                            action={(e) => handleAddToWishlist(e)}
+                        />
+                    ))}
+            {/* </Pagination> */}
         </div>
     );
 };

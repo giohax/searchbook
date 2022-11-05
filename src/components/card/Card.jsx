@@ -1,32 +1,22 @@
 import React from "react";
-import "./Card.scss";
-
-import { useDispatch } from "react-redux";
 
 const Card = ({ id, title, publisher, description, authors, img, action }) => {
     return (
-        <li className="card" onClick={action} id={id}>
-            <div>
-                <div>
-                    <img src={img} />
-                </div>
-                <div>
-                    <p>
-                        <b>Title:</b> {title ?? "N/A"}
-                    </p>
-                    <p>
-                        <b>Authors: </b>
-                        {authors ?? "N/A"}
-                    </p>
-                    <p>
-                        <b>Publisher:</b> {publisher ?? "N/A"}
-                    </p>
-                </div>
+        <li
+            className="bg-stone-50 p-6 mt-3 mb-3 shadow-lg flex w-full sm:max-w-sm"
+            onClick={action}
+            id={id}
+        >
+            <div className="flex-1">
+                <img src={img} />
             </div>
-            <div>
-                <p>
-                    <b>Description:</b> {description ?? "N/A"}
-                </p>
+            <div className="flex-1">
+                <p className="text-sm font-bold">{title ?? "N/A"}</p>
+                <p className="text-sm text-gray-500">{authors ?? "N/A"}</p>
+                <p className="text-sm text-gray-400">{publisher ?? "N/A"}</p>
+                <button className="text-sm bg-red-500 text-white w-1/2 p-2 mt-3">
+                    Details
+                </button>
             </div>
         </li>
     );

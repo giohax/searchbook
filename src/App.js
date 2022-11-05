@@ -5,14 +5,14 @@ import { Routes, Route } from "react-router-dom";
 
 const App = () => {
     return (
-        <div>
+        <>
             <Routes>
                 <Route path="/" element={<Navbar />}>
                     <Route index element={<Home />} />
                     <Route path="/wishlist" element={<Wishlist />} />
                 </Route>
             </Routes>
-        </div>
+        </>
     );
 };
 

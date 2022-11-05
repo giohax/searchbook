@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import Card from "../../components/card/Card";
 import { wishlistActions } from "../../features/wishlist/wishlistSlice";
 import { useDispatch } from "react-redux";
-import "./Wishlist.scss";
 
 const Wishlist = () => {
     const wishlist = useSelector((state) => state.wishlist.wishlist);
