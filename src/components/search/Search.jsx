@@ -47,27 +47,29 @@ const Search = () => {
                 placeholder="Search book..."
                 value={userInput}
             />
-            <Pagination>
-                <div className="grid gap-5 md:grid-cols-2">
-                    {loading && (
-                        <img
-                            className="col-span-2"
-                            src={LoadingGif}
-                            alt="Loading..."
-                        />
-                    )}
-
-                    {!loading &&
-                        userInput &&
-                        bookItems.map((book) => (
-                            <Card
-                                key={book.id}
-                                book={book}
-                                handler={(e) => handleAddToWishlist(e)}
+            {userInput && (
+                <Pagination>
+                    <div className="grid gap-5 md:grid-cols-2">
+                        {loading && (
+                            <img
+                                className="col-span-2"
+                                src={LoadingGif}
+                                alt="Loading..."
                             />
-                        ))}
-                </div>
-            </Pagination>
+                        )}
+
+                        {!loading &&
+                            userInput &&
+                            bookItems.map((book) => (
+                                <Card
+                                    key={book.id}
+                                    book={book}
+                                    handler={(e) => handleAddToWishlist(e)}
+                                />
+                            ))}
+                    </div>
+                </Pagination>
+            )}
         </div>
     );
 };
