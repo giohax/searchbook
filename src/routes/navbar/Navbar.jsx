@@ -4,8 +4,8 @@ import Logo from "../../assets/logo.png";
 
 const Navbar = () => {
     return (
-        <header>
-            <div className="bg-amber-100">
+        <>
+            <header className="bg-amber-100">
                 <div className="flex w-full p-6 items-center justify-between">
                     <Link className="font-bold text-indigo-900 text-lg" to="/">
                         SEARCHBOOK
@@ -23,9 +23,9 @@ const Navbar = () => {
                         </Link>
                     </div>
                 </div>
-            </div>
+            </header>
             <Outlet />
-        </header>
+        </>
     );
 };
 
