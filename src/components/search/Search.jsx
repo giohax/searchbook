@@ -52,19 +52,13 @@ const Search = () => {
                 {/* <Pagination> */}
                 {!loading &&
                     userInput &&
-                    bookItems
-                        // .filter((book) =>
-                        //     book.volumeInfo.title
-                        //         .toLowerCase()
-                        //         .includes(userInput)
-                        // )
-                        .map((book) => (
-                            <Card
-                                key={book.id}
-                                book={book}
-                                handler={(e) => handleAddToWishlist(e)}
-                            />
-                        ))}
+                    bookItems.map((book) => (
+                        <Card
+                            key={book.id}
+                            book={book}
+                            handler={(e) => handleAddToWishlist(e)}
+                        />
+                    ))}
                 {/* </Pagination> */}
             </div>
         </div>

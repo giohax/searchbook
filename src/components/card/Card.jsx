@@ -12,7 +12,7 @@ const Card = ({ book, handler }) => {
 
     return (
         <li
-            className="bg-stone-50 p-6 shadow-lg flex w-full sm:max-w-sm hover:scale-105 transition-transform duration-200 cursor-pointer"
+            className="bg-stone-50 p-6 shadow-lg flex w-full sm:max-w-sm hover:scale-105 transition-transform duration-200 cursor-pointer  select-none active:brightness-110 active:text-red-400"
             onClick={handler}
             id={id}
         >

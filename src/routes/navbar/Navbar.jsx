@@ -5,7 +5,7 @@ import Logo from "../../assets/logo.png";
 const Navbar = () => {
     return (
         <>
-            <header className="bg-amber-100">
+            <header className="bg-amber-100 select-none">
                 <div className="flex w-full p-6 items-center justify-between">
                     <Link className="font-bold text-indigo-900 text-lg" to="/">
                         SEARCHBOOK
