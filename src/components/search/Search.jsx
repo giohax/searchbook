@@ -42,7 +42,7 @@ const Search = () => {
     };
 
     return (
-        <div className="p-10 bg-amber-50 flex flex-col h-screen items-center">
+        <div className="p-10 bg-amber-50 flex flex-col h-full items-center">
             <input
                 onChange={handleInput}
                 className="flex border border-gray-200 shadow-lg px-6 py-3 focus:outline-none w-full bg-amber-50 mb-5 w-full sm:max-w-sm"
@@ -61,13 +61,8 @@ const Search = () => {
                     .map((book) => (
                         <Card
                             key={book.id}
-                            id={book.id}
-                            img={book.volumeInfo.imageLinks.thumbnail}
-                            title={book.volumeInfo.title}
-                            authors={book.volumeInfo.authors}
-                            description={book.volumeInfo.description}
-                            publisher={book.volumeInfo.publisher}
-                            action={(e) => handleAddToWishlist(e)}
+                            book={book}
+                            handler={(e) => handleAddToWishlist(e)}
                         />
                     ))}
             {/* </Pagination> */}
