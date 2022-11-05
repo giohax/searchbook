@@ -50,22 +50,28 @@ const Search = () => {
                 placeholder="Search book..."
                 value={userInput}
             />
-            {searchBook.loading && <img src={LoadingGif} alt="Loading..." />}
-            {/* <Pagination> */}
-            {!searchBook.loading &&
-                userInput &&
-                bookItems
-                    .filter((book) =>
-                        book.volumeInfo.title.toLowerCase().includes(userInput)
-                    )
-                    .map((book) => (
-                        <Card
-                            key={book.id}
-                            book={book}
-                            handler={(e) => handleAddToWishlist(e)}
-                        />
-                    ))}
-            {/* </Pagination> */}
+            <div className="md:grid grid-cols-2 space-x-3">
+                {searchBook.loading && (
+                    <img src={LoadingGif} alt="Loading..." />
+                )}
+                {/* <Pagination> */}
+                {!searchBook.loading &&
+                    userInput &&
+                    bookItems
+                        .filter((book) =>
+                            book.volumeInfo.title
+                                .toLowerCase()
+                                .includes(userInput)
+                        )
+                        .map((book) => (
+                            <Card
+                                key={book.id}
+                                book={book}
+                                handler={(e) => handleAddToWishlist(e)}
+                            />
+                        ))}
+                {/* </Pagination> */}
+            </div>
         </div>
     );
 };
