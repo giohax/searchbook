@@ -1,12 +1,14 @@
 import React from "react";
 
 const Card = ({ book, handler }) => {
-    const id = book.id;
-    const img = book.volumeInfo.imageLinks.thumbnail;
-    const title = book.volumeInfo.title;
-    const authors = book.volumeInfo.authors;
-    const description = book.volumeInfo.description;
-    const publisher = book.volumeInfo.publisher;
+    const id = book?.id;
+    const img =
+        book?.volumeInfo?.imageLinks?.thumbnail ??
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png";
+    const title = book?.volumeInfo?.title ?? "N/A";
+    const authors = book?.volumeInfo?.authors ?? "N/A";
+    const description = book?.volumeInfo?.description ?? "N/A";
+    const publisher = book?.volumeInfo?.publisher ?? "N/A";
 
     return (
         <li
@@ -19,11 +21,9 @@ const Card = ({ book, handler }) => {
             </div>
             <div className="flex-1 flex flex-col justify-between">
                 <div>
-                    <p className="text-sm font-bold">{title ?? "N/A"}</p>
-                    <p className="text-sm text-gray-500">{authors ?? "N/A"}</p>
-                    <p className="text-sm text-gray-400">
-                        {publisher ?? "N/A"}
-                    </p>
+                    <p className="text-sm font-bold">{title}</p>
+                    <p className="text-sm text-gray-500">{authors}</p>
+                    <p className="text-sm text-gray-400">{publisher}</p>
                 </div>
                 <button className="text-sm bg-red-500 text-white p-2 mt-3">
                     ADD TO WISHLIST
