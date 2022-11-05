@@ -49,7 +49,13 @@ const Search = () => {
             />
             <Pagination>
                 <div className="grid gap-5 md:grid-cols-2">
-                    {loading && <img src={LoadingGif} alt="Loading..." />}
+                    {loading && (
+                        <img
+                            className="col-span-2"
+                            src={LoadingGif}
+                            alt="Loading..."
+                        />
+                    )}
 
                     {!loading &&
                         userInput &&
