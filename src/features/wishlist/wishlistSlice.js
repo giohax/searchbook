@@ -14,9 +14,8 @@ const wishlistSlice = createSlice({
         },
         removeWishlistItem: (state, action) => {
             state.wishlist = state.wishlist.filter(
-                (book) => book.id !== action.payload
+                ([book]) => book.id !== action.payload
             );
-            console.log("removing...");
         },
     },
 });

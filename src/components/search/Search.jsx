@@ -34,17 +34,7 @@ const Search = () => {
     };
 
     const handleAddToWishlist = (e) => {
-        const [{ volumeInfo }] = bookItems.filter(
-            (book) => book.id === e.currentTarget.id
-        );
-        const book = {
-            id: e.currentTarget.id,
-            img: volumeInfo.imageLinks.thumbnail,
-            title: volumeInfo.title,
-            authors: volumeInfo.authors,
-            description: volumeInfo.description,
-            publisher: volumeInfo.publisher,
-        };
+        const book = bookItems.filter((book) => book.id === e.currentTarget.id);
         dispatch(wishlistActions.addWishlistItem(book));
     };
 
