@@ -11,15 +11,23 @@ import { useSelector } from "react-redux";
 import { wishlistActions } from "../../features/wishlist/wishlistSlice";
 import LoadingGif from "../../assets/loading.gif";
 // import Pagination from "../pagination/Pagination";
+import debounce from "../../scripts/debounce";
 
 const Search = () => {
     const [userInput, setUserInput] = useState("");
     const dispatch = useDispatch();
     const bookItems = useSelector((state) => state.searchBook.bookItems);
     const searchBook = useSelector((state) => state.searchBook);
+    const debouncedFetch = debounce(fetchBookItems, 1000);
+    let timerID;
 
     useEffect(() => {
-        dispatch(fetchBookItems(userInput));
+        // dispatch(debouncedFetch(userInput));
+        clearTimeout(timerID);
+        timerID = setTimeout(() => {
+            console.log("fetching...");
+            dispatch(fetchBookItems(userInput));
+        }, 2000);
     }, [userInput]);
 
     const handleInput = (e) => {
