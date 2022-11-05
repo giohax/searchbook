@@ -12,7 +12,7 @@ const Card = ({ book, handler }) => {
 
     return (
         <li
-            className="bg-stone-50 p-6 shadow-lg flex w-full sm:max-w-sm hover:scale-105 transition-transform duration-200 cursor-pointer  select-none active:brightness-110 active:text-red-400"
+            className="bg-stone-50 p-6 shadow-lg flex w-full sm:max-w-sm hover:scale-105 transition-transform duration-200 cursor-pointer  select-none active:brightness-110 active:text-amber-600"
             onClick={handler}
             id={id}
         >
@@ -25,7 +25,7 @@ const Card = ({ book, handler }) => {
                     <p className="text-sm text-gray-500">{authors}</p>
                     <p className="text-sm text-gray-400">{publisher}</p>
                 </div>
-                <button className="text-sm bg-red-500 text-white p-2 mt-3">
+                <button className="text-xs bg-amber-500 text-white p-2 mt-3">
                     ADD TO WISHLIST
                 </button>
             </div>

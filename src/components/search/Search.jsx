@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 import { wishlistActions } from "../../features/wishlist/wishlistSlice";
 import LoadingGif from "../../assets/loading.gif";
 
-// import Pagination from "../pagination/Pagination";
+import Pagination from "../pagination/Pagination";
 
 const Search = () => {
     const [userInput, setUserInput] = useState("");
@@ -47,20 +47,21 @@ const Search = () => {
                 placeholder="Search book..."
                 value={userInput}
             />
-            <div className="grid gap-5 md:grid-cols-2">
-                {loading && <img src={LoadingGif} alt="Loading..." />}
-                {/* <Pagination> */}
-                {!loading &&
-                    userInput &&
-                    bookItems.map((book) => (
-                        <Card
-                            key={book.id}
-                            book={book}
-                            handler={(e) => handleAddToWishlist(e)}
-                        />
-                    ))}
-                {/* </Pagination> */}
-            </div>
+            <Pagination>
+                <div className="grid gap-5 md:grid-cols-2">
+                    {loading && <img src={LoadingGif} alt="Loading..." />}
+
+                    {!loading &&
+                        userInput &&
+                        bookItems.map((book) => (
+                            <Card
+                                key={book.id}
+                                book={book}
+                                handler={(e) => handleAddToWishlist(e)}
+                            />
+                        ))}
+                </div>
+            </Pagination>
         </div>
     );
 };
